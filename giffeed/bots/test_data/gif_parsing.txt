@@ -1,0 +1,7 @@
+"http://test/test.gif"
+'http://test/test.gif'
+"http://test/test.gif"
+"http://test/test2.gif"
+http://test/test3.gif
+http://test/test3.gif
+"http://topsy.com/test2.gif"
