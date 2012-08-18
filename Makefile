@@ -41,17 +41,6 @@ ifndef APP
 	$(HMANAGE) migrate
 else
 	@echo Starting of migration of $(APP) on Heroku
-	$(HMANAGE) schemamigration $(APP) --auto
-	$(HMANAGE) migrate $(APP)
-	@echo Done
-endif
-
-hmigrate_init:
-ifndef APP
-	@echo Please, specify -e APP=appname argument
-else
-	@echo Starting init migration of $(APP)
-	$(HMANAGE) schemamigration $(APP) --initial
 	$(HMANAGE) migrate $(APP)
 	@echo Done
 endif
