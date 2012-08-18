@@ -3,12 +3,8 @@ Admin
     Approve a user
 
 Bot
-    Post GIF to its feed.
-    Regularly (5 min) download a URL 
-        Main URL - parse GIFs and URLs
-            URLs are saved for future downloads
-            Removed after download is complete
-        If not main URL - parse only GIFs
+    Version 0.1:
+        Parse GIF images from a feed
 
 User
     Login with Twitter
