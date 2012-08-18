@@ -27,6 +27,9 @@ else
 	@echo Done
 endif
 
+test:
+	$(MANAGE) test bots core
+
 
 # Commands starting with h are the same only for Heroku
 
