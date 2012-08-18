@@ -1,0 +1,25 @@
+Admin
+    Create a bot
+    Approve a user
+
+Bot
+    Post GIF to its feed.
+    Regularly (5 min) download a URL 
+        Main URL - parse GIFs and URLs
+            URLs are saved for future downloads
+            Removed after download is complete
+        If not main URL - parse only GIFs
+
+User
+    Login with Twitter
+    Leave a comment below a post
+    Comment may have hashtags
+    Repost a post to his feed
+    Subscribe to bots and users
+    See a feed (only latest posts from all subscriptions in reverse chronological order)
+
+Hashtag
+    Search all posts for a given hashtag
+
+Comment
+    Hashtag is a link
