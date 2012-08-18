@@ -18,11 +18,20 @@ User
     Subscribe to bots and users
     See a feed (only latest posts from all subscriptions in reverse chronological order)
 
-Hashtag
-    Search all posts for a given hashtag
+GIF
+    Maybe in different posts, one post per user/bot
+    Has source
+
+Post
+    References GIF
+    Has comments
+    May be repoststed by a user
 
 Comment
     Hashtag is a link
+
+Hashtag
+    Search all posts for a given hashtag
 
 Main page
     10 bots/users with latest posts
