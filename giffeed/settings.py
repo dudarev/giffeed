@@ -117,6 +117,7 @@ INSTALLED_APPS = (
     'south',
 
     'giffeed.core',
+    'giffeed.bots',
 )
 
 # A sample logging configuration. The only tangible logging
