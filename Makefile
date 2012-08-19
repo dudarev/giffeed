@@ -1,6 +1,9 @@
 MANAGE= python manage.py
 HMANAGE= heroku run python manage.py
 
+run:
+	$(MANAGE) runserver
+
 syncdb:
 	python manage.py syncdb
 
