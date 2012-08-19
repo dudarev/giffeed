@@ -1,9 +1,16 @@
 Django==1.4.1
 South==0.7.6
+amqplib==1.0.2
+anyjson==0.3.3
+billiard==2.7.3.12
 boto==2.5.2
+celery==3.0.6
 dj-database-url==0.2.1
+django-celery==3.0.6
 django-s3-folder-storage==0.1
 django-storages==1.1.5
 gunicorn==0.14.6
+kombu==2.4.0
 psycopg2==2.4.5
+python-dateutil==1.5
 wsgiref==0.1.2

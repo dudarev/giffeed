@@ -117,6 +117,8 @@ INSTALLED_APPS = (
     'south',
     'gunicorn',
     's3_folder_storage',
+    'kombu.transport.django',
+    'djcelery',
 
     'giffeed.core',
     'giffeed.bots',
@@ -166,6 +168,10 @@ MEDIA_URL = '//s3.amazonaws.com/%s/media/' % AWS_STORAGE_BUCKET_NAME
 STATIC_ROOT = "/%s/" % STATIC_S3_PATH
 STATIC_URL = '//s3.amazonaws.com/%s/static/' % AWS_STORAGE_BUCKET_NAME
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+# django-celery
+
+BROKER_BACKEND = 'django'
 
 try:
     from local_settings import *
