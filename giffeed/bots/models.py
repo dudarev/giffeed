@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from django.db import IntegrityError, connection
+
 
 class Bot(models.Model):
 
@@ -46,7 +48,11 @@ class Bot(models.Model):
 @receiver(post_save, sender=Bot)
 def bot_save_handler(sender, instance, created, **kwargs):
     if created:
-        u = User.objects.create_user(instance.name, 'dudarev@gmail.com', '')
-        u.save()
+        try:
+            u = User.objects.create_user(instance.name, 'dudarev@gmail.com', '')
+            u.save()
+        except IntegrityError:
+            connection._rollback()
+            u = User.objects.get(username__exact=instance.name)
         instance.user = u
         instance.save()
