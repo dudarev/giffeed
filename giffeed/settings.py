@@ -115,6 +115,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     'south',
+    'gunicorn',
 
     'giffeed.core',
     'giffeed.bots',
