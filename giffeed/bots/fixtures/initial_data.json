@@ -40,7 +40,7 @@
         "model": "bots.bot", 
         "fields": {
             "url": "http://otter.topsy.com/searchdate.rss?q=gif&window=h", 
-            "source": "", 
+            "source": "topsy", 
             "last_run_at": "2012-08-18T22:06:54Z", 
             "user": 6, 
             "name": "-topsy_plus"
@@ -51,7 +51,7 @@
         "model": "bots.bot", 
         "fields": {
             "url": "http://otter.topsy.com/searchdate.rss?q=gif&window=h", 
-            "source": "", 
+            "source": "topsy", 
             "last_run_at": "2000-01-01T06:00:00Z", 
             "user": 7, 
             "name": "-topsy_twitter"
