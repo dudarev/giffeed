@@ -30,8 +30,15 @@ class UserPageView(TemplateView):
         context = super(UserPageView, self).get_context_data(**kwargs)
 
         username = kwargs['username']
-        posts = Post.objects.all().filter(user=username)[:10]
+        context['username'] = username 
+
+        try:
+            u = User.objects.get(username=username)
+        except User.DoesNotExist:
+            context['error_message'] = "Such user does not exist."
+            return context
+
+        posts = Post.objects.all().filter(user=u)[:10]
 
         context['latest_posts'] = posts
-        context['username'] = username 
         return context
