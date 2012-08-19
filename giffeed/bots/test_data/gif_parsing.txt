@@ -5,3 +5,4 @@
 http://test/test3.gif
 http://test/test3.gif
 "http://topsy.com/test2.gif"
+"http://topsy.com/test2gif"
