@@ -1,13 +1,74 @@
 [
     {
         "pk": 2, 
-        "model": "bots.bot", 
+        "model": "auth.user", 
         "fields": {
-            "url": "http://otter.topsy.com/searchdate.rss?q=gif&window=h", 
-            "source": "topsy", 
-            "last_run_at": "2012-08-18T22:06:54Z", 
-            "user": 6, 
-            "name": "-topsy_plus"
+            "username": "-topsy_plus", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2012-08-19T16:34:00.804", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "!", 
+            "email": "dudarev@gmail.com", 
+            "date_joined": "2012-08-19T16:34:00.804"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "-topsy_twitter", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2012-08-19T16:34:00.816", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "!", 
+            "email": "dudarev@gmail.com", 
+            "date_joined": "2012-08-19T16:34:00.816"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "-topsy_twitter_coffee", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2012-08-19T17:49:16.998", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "!", 
+            "email": "dudarev@gmail.com", 
+            "date_joined": "2012-08-19T17:49:16.998"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "-imgur", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2012-08-19T17:49:49.899", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "!", 
+            "email": "dudarev@gmail.com", 
+            "date_joined": "2012-08-19T17:49:49.899"
         }
     }, 
     {
@@ -16,9 +77,42 @@
         "fields": {
             "url": "http://otter.topsy.com/searchdate.rss?q=gif&window=h", 
             "source": "topsy", 
-            "last_run_at": "2000-01-01T06:00:00Z", 
-            "user": 7, 
+            "last_run_at": "2012-08-19T18:00:35.801", 
+            "user": 3, 
             "name": "-topsy_twitter"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "bots.bot", 
+        "fields": {
+            "url": "http://otter.topsy.com/searchdate.rss?q=gif%20coffee&window=d20", 
+            "source": "topsy", 
+            "last_run_at": "2012-08-19T18:01:35.815", 
+            "user": 4, 
+            "name": "-topsy_twitter_coffee"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "bots.bot", 
+        "fields": {
+            "url": "http://feeds.feedburner.com/ImgurGallery?format=xml", 
+            "source": "", 
+            "last_run_at": "2012-08-19T18:02:33.753", 
+            "user": 5, 
+            "name": "-imgur"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "bots.bot", 
+        "fields": {
+            "url": "http://otter.topsy.com/searchdate.rss?q=gif&window=h", 
+            "source": "topsy", 
+            "last_run_at": "2012-08-19T18:03:36.459", 
+            "user": 2, 
+            "name": "-topsy_plus"
         }
     }
 ]
