@@ -5,7 +5,7 @@ run:
 	foreman start
 
 dev:
-	$(MANAGE) runserver
+	$(MANAGE) runserver --settings=giffeed.debug_settings
 
 
 syncdb:
