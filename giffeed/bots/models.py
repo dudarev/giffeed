@@ -31,7 +31,7 @@ class Bot(models.Model):
             response = urllib2.urlopen(url_request)
             feed = response.read()
 
-        gif_regex = re.compile('http[^\'" \n>]+.gif', re.IGNORECASE)
+        gif_regex = re.compile('http[^\'" \n>]+\.gif', re.IGNORECASE)
         links = set(re.findall(gif_regex, feed))
 
         # special cases
