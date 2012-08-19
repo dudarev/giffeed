@@ -1,15 +1,12 @@
 from django.conf.urls import patterns, include, url
 
-from django.views.generic import TemplateView
-
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
-
+from giffeed.core.views import HomePageView
 
 urlpatterns = patterns('',
-    url(r'^$', TemplateView.as_view(template_name="index.html"), name='index'),
+    url(r'^$', HomePageView.as_view(), name='home'),
     url(r'^admin/', include(admin.site.urls)),
 )
 
