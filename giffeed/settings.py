@@ -173,6 +173,18 @@ ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 BROKER_BACKEND = 'django'
 
+import djcelery
+djcelery.setup_loader()
+
+from datetime import timedelta
+
+CELERYBEAT_SCHEDULE = {
+    "run-bots-every-1-minute": {
+        "task": "giffeed.bots.tasks.run_bots",
+        "schedule": timedelta(minutes=1),
+     },
+}
+
 try:
     from local_settings import *
 except ImportError:
