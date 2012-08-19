@@ -38,7 +38,7 @@ class UserPageView(TemplateView):
             context['error_message'] = "Such user does not exist."
             return context
 
-        posts = Post.objects.all().filter(user=u)[:10]
+        posts = Post.objects.all().filter(user=u).order_by('-time_added')[:10]
 
         context['latest_posts'] = posts
         return context
