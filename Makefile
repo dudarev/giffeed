@@ -8,7 +8,7 @@ dev:
 	$(MANAGE) runserver --settings=giffeed.debug_settings
 
 dumpdata:
-	$(MANAGE) dumpdata auth.User bots --indent 4 > bots.json
+	$(MANAGE) dumpdata auth.User bots core --indent 4 > bots.json
 
 reset:
 	python manage.py sqlclear core bots admin auth | python manage.py dbshell
