@@ -2,7 +2,11 @@ MANAGE= python manage.py
 HMANAGE= heroku run python manage.py
 
 run:
+	foreman start
+
+dev:
 	$(MANAGE) runserver
+
 
 syncdb:
 	python manage.py syncdb
