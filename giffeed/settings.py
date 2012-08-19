@@ -114,7 +114,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
-    'south',
     'gunicorn',
     's3_folder_storage',
     'kombu.transport.django',
