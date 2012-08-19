@@ -10,6 +10,9 @@ dev:
 dumpdata:
 	$(MANAGE) dumpdata auth.User bots --indent 4 > bots.json
 
+reset:
+	python manage.py sqlclear core bots admin auth | python manage.py dbshell
+
 syncdb:
 	python manage.py syncdb
 
