@@ -1,7 +1,7 @@
 # Create your views here.
 from django.views.generic.base import TemplateView
-
-from giffeed.core.models import Post
+from django.db.models import Max
+from django.contrib.auth.models import User
 
 class HomePageView(TemplateView):
 
@@ -9,5 +9,13 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
-        context['latest_posts'] = Post.objects.all()[:5]
+
+        posts = []
+        for u in User.objects.annotate(last_post=Max('post__time_added')).order_by('-last_post')[:10]:
+            try:
+                posts.append(u.post_set.latest('time_added'))
+            except:
+                pass
+
+        context['latest_posts'] = posts
         return context
