@@ -184,6 +184,9 @@ CELERYBEAT_SCHEDULE = {
      },
 }
 
+
+OLDEST_LAST_RUN_DELTA = 2 # hours
+
 try:
     from local_settings import *
 except ImportError:
