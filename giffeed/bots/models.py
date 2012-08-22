@@ -45,7 +45,6 @@ class Bot(models.Model):
         return links
 
 
-"""temporary remove this for heroku migraiton
 @receiver(post_save, sender=Bot)
 def bot_save_handler(sender, instance, created, **kwargs):
     if created:
@@ -57,4 +56,3 @@ def bot_save_handler(sender, instance, created, **kwargs):
             return
         instance.user = u
         instance.save()
-"""
