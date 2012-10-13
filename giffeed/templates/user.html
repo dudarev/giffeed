@@ -26,6 +26,24 @@
                     </div><!--/row-->
                     {% endfor %}
 
+                    <div class="row-fluid">
+                        <div class="offset4 span8 pagination" align="center">
+                            <span class="step-links">
+                                {% if latest_posts.has_previous %}
+                                    <a href="?page={{ latest_posts.previous_page_number }}">previous</a>
+                                {% endif %}
+
+                                <span class="current">
+                                    page {{ latest_posts.number }} of {{ latest_posts.paginator.num_pages }}
+                                </span>
+
+                                {% if latest_posts.has_next %}
+                                    <a href="?page={{ latest_posts.next_page_number }}">next</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
                     {% endif %}
 
 {% endblock %}

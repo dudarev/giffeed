@@ -2,8 +2,10 @@
 from django.views.generic.base import TemplateView
 from django.db.models import Max
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from giffeed.core.models import Post
+
 
 class HomePageView(TemplateView):
 
@@ -22,6 +24,7 @@ class HomePageView(TemplateView):
         context['latest_posts'] = posts
         return context
 
+
 class UserPageView(TemplateView):
 
     template_name = "user.html"
@@ -30,7 +33,7 @@ class UserPageView(TemplateView):
         context = super(UserPageView, self).get_context_data(**kwargs)
 
         username = kwargs['username']
-        context['username'] = username 
+        context['username'] = username
 
         try:
             u = User.objects.get(username=username)
@@ -38,7 +41,18 @@ class UserPageView(TemplateView):
             context['error_message'] = "Such user does not exist."
             return context
 
-        posts = Post.objects.all().filter(user=u).order_by('-time_added')[:10]
+        posts_list = Post.objects.all().filter(user=u).order_by('-time_added')
+        paginator = Paginator(posts_list, 10)  # Show 10 posts per page
+
+        page = self.request.GET.get('page')
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            posts = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            posts = paginator.page(paginator.num_pages)
 
         context['latest_posts'] = posts
         return context
