@@ -1,5 +1,6 @@
 Django==1.4.1
 South==0.7.6
+TwitterSearch==0.50
 amqplib==1.0.2
 anyjson==0.3.3
 billiard==2.7.3.12
