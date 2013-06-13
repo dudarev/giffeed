@@ -73,6 +73,12 @@
                 <div class="span3">
                     <ul class="nav nav-list sidebar">
                         <li><a href="/about">About</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url logout %}" class="button">Logout</a></li>
+                            <li><a href="{% url search-form %}" class="button">Search</a></li>
+                        {% else %}
+                            <li><a href="{% url login %}" class="button">Login</a></li>
+                        {% endif %}
                     </ul>
                 </div><!--/span-->
             </div><!--/row-->
