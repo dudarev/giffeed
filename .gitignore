@@ -2,6 +2,7 @@
 *.log
 *.pot
 *.pyc
+*dump*.sql
 local_settings.py
 progress*
 celerybeat-schedule
