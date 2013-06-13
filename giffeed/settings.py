@@ -121,6 +121,9 @@ INSTALLED_APPS = (
 
     'giffeed.core',
     'giffeed.bots',
+
+    'social_auth',
+    'giffeed'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -191,3 +194,24 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+#Authentication with Twitter
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.twitter.TwitterBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# AD: TODO: this should be moved either to environment settings or to a file outside of git repository
+TWITTER_CONSUMER_KEY         = 'AcuaQHqLKpXLengWfIIkg'
+TWITTER_CONSUMER_SECRET      = '0dP1ti2WKXX6bzCsItqXUUv1Vl6KUvw4UORhlD10nVY'
+TWITTER_ACCESS_TOKEN         = '78419317-478v5qPxv32b9qVEL72nIGGpVvIlIoXQnsKj6pcSr'
+TWITTER_ACCESS_TOKEN_SECRET  = 'YnXCc491PAzb6LoaeLdjWsH67iIyfCMGfEphEW46QSA'
+
+LOGIN_URL          = '/login/'
+LOGOUT_URL =         '/logout/'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_ERROR_URL    = '/login-error/'
+
+SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
+SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
+

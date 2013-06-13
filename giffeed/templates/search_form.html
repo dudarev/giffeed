@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html>
+<head>
+    <title>Search</title>
+</head>
+<body>
+    <form action={% url search-results %}>
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>
+
+{% endblock content %}
