@@ -201,6 +201,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+# AD: TODO: this should be moved either to environment settings or to a file outside of git repository
 TWITTER_CONSUMER_KEY         = 'AcuaQHqLKpXLengWfIIkg'
 TWITTER_CONSUMER_SECRET      = '0dP1ti2WKXX6bzCsItqXUUv1Vl6KUvw4UORhlD10nVY'
 TWITTER_ACCESS_TOKEN         = '78419317-478v5qPxv32b9qVEL72nIGGpVvIlIoXQnsKj6pcSr'
