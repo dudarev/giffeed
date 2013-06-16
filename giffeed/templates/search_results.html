@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+                {% for p in found_urls %}
+                    <div class="row-fluid">
+                        <div class="span4 username-container" align="right">
+                            <h2>{{search_request}}</h2>
+                        </div><!--/span-->
+                        <div class="span8 gif-container {% if not forloop.last %}bottom{% endif %}" align="center">
+                            <a href="{{ search_request }}"> <img src="{{ p }}"></a>
+                        </div><!--/span-->
+                    </div><!--/row-->
+                {% endfor %}
+{% endblock %}
