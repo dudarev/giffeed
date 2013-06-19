@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-                {% for p in found_urls %}
+                {% for p in urls %}
                     <div class="row-fluid">
                         <div class="span4 username-container" align="right">
                             <h2>{{search_request}}</h2>
@@ -11,4 +11,23 @@
                         </div><!--/span-->
                     </div><!--/row-->
                 {% endfor %}
+
+                <div class="row-fluid">
+                    <div class="offset4 span8 pagination" align="center">
+                        <span class="step-links">
+                            {% if urls.has_previous %}
+                                <a href="?page={{ urls.previous_page_number }}&q={{ q }}">previous</a>
+                            {% endif %}
+
+                            <span class="current">
+                                page {{ urls.number }} of {{ urls.paginator.num_pages }}
+                            </span>
+
+                            {% if urls.has_next %}
+                                <a href="?page={{ urls.next_page_number }}&q={{ q }}">next</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+
 {% endblock %}

@@ -8,6 +8,7 @@ from TwitterSearch import *
 from models import SearchKeyWord
 from giffeed import settings, twitter
 from datetime import datetime, timedelta
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def search_form(request):
@@ -87,9 +88,23 @@ def search(request):
         else:
             found_urls = fetch_tweets(search_request)
         print(found_urls)
+
+        urls_list = found_urls
+        paginator = Paginator(urls_list, 10)  # Show 10 posts per page
+        page = request.GET.get('page')
+        try:
+            urls = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            urls = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            urls = paginator.page(paginator.num_pages)
+
         context = RequestContext(request)
-        context['found_urls'] = found_urls
+        context['urls'] = urls
         context['search_request'] = search_request
+        context['q'] = request.GET['q']
 
         return render_to_response('search_results.html', context_instance=context)
     else:
