@@ -204,6 +204,7 @@ AUTHENTICATION_BACKENDS = (
 tweets_per_page = 50
 total_tweets_max = 50
 
+
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_REDIRECT_URL = '/'
