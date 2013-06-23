@@ -1,5 +1,6 @@
 # Django settings for giffeed project.
 import os
+from twitter import *
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
