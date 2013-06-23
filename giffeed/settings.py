@@ -102,7 +102,7 @@ ROOT_URLCONF = 'giffeed.urls'
 WSGI_APPLICATION = 'giffeed.wsgi.application'
 
 TEMPLATE_DIRS = (
-    '%s/giffeed/templates/' % (SITE_ROOT),
+    '%s/giffeed/templates/' % SITE_ROOT,
 )
 
 INSTALLED_APPS = (
@@ -188,7 +188,7 @@ CELERYBEAT_SCHEDULE = {
 }
 
 
-OLDEST_LAST_RUN_DELTA = 2 # hours
+OLDEST_LAST_RUN_DELTA = 2  # hours
 
 try:
     from local_settings import *
@@ -201,17 +201,14 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-# AD: TODO: this should be moved either to environment settings or to a file outside of git repository
-TWITTER_CONSUMER_KEY         = 'AcuaQHqLKpXLengWfIIkg'
-TWITTER_CONSUMER_SECRET      = '0dP1ti2WKXX6bzCsItqXUUv1Vl6KUvw4UORhlD10nVY'
-TWITTER_ACCESS_TOKEN         = '78419317-478v5qPxv32b9qVEL72nIGGpVvIlIoXQnsKj6pcSr'
-TWITTER_ACCESS_TOKEN_SECRET  = 'YnXCc491PAzb6LoaeLdjWsH67iIyfCMGfEphEW46QSA'
+tweets_per_page = 50
+total_tweets_max = 50
 
-LOGIN_URL          = '/login/'
-LOGOUT_URL =         '/logout/'
+
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/logout/'
 LOGIN_REDIRECT_URL = '/'
-LOGIN_ERROR_URL    = '/login-error/'
+LOGIN_ERROR_URL = '/login-error/'
 
-SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
+SOCIAL_AUTH_COMPLETE_URL_NAME = 'socialauth_complete'
 SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
-
