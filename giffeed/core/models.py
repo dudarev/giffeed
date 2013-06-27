@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 class Tag(models.Model):
     tag = models.TextField()
 
+    def __unicode__(self):
+        return self.tag
+
 
 class Post(models.Model):
     user = models.ForeignKey(User)
@@ -12,5 +15,3 @@ class Post(models.Model):
     time_added = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag)
     comment = models.TextField()
-
-
