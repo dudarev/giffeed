@@ -76,6 +76,7 @@
                         {% if user.is_authenticated %}
                             <li><a href="{% url logout %}" class="button">Logout</a></li>
                             <li><a href="{% url search-form %}" class="button">Search</a></li>
+                            <li><a href="{% url upload %}" class="button">Post a gif</a></li>
                         {% else %}
                             <li><a href="{% url login %}" class="button">Login</a></li>
                         {% endif %}

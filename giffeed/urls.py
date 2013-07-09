@@ -22,6 +22,7 @@ urlpatterns = patterns(
 
     url(r'^search/form$', search_form, name='search-form'),
     url(r'^search/results$', search, name='search-results'),
-    (r'^search/result',
-    TemplateView.as_view(template_name="search_results.html")),
+
+    url(r'', include('giffeed.upload.urls')),
+
 )
