@@ -12,7 +12,7 @@ def search_form(request):
     return render(request, 'search_form.html')
 
 
-def extract_urls (tweets):
+def extract_urls(tweets):
     """
     :takes tweets and extracts urls that contain "gif"
     """
@@ -27,7 +27,7 @@ def extract_urls (tweets):
                         if element['expanded_url'] not in extracted_urls:
                             extracted_urls.append(element['expanded_url'])
                             tweet_count += 1
-        if tweet_count > (settings.total_tweets_max - 1):
+        if tweet_count > (settings.TOTAL_TWEETS_MAX - 1):
             break
     else:
         print len(extracted_urls)
