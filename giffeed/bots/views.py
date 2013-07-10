@@ -7,6 +7,7 @@ from django.db import IntegrityError, connection
 from giffeed.bots.models import Bot
 from giffeed.core.models import Post
 
+
 def update(request):
 
     b = Bot.objects.order_by('last_run_at')[0]

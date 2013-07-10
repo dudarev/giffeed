@@ -1,12 +1,9 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 from django.template.context import RequestContext
-from django.views.generic import TemplateView
-# AD: TODO: not good practice in accordance with PEP8.
-# Mention what function and classes used in the code explicitly.
-from TwitterSearch import *
+from twython import Twython
 from models import SearchKeyWord
-from giffeed import settings, twitter
+from django.conf import settings
 from datetime import datetime, timedelta
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
@@ -15,7 +12,7 @@ def search_form(request):
     return render(request, 'search_form.html')
 
 
-def extract_urls (tweets):
+def extract_urls(tweets):
     """
     :takes tweets and extracts urls that contain "gif"
     """
@@ -30,7 +27,7 @@ def extract_urls (tweets):
                         if element['expanded_url'] not in extracted_urls:
                             extracted_urls.append(element['expanded_url'])
                             tweet_count += 1
-        if tweet_count > (settings.total_tweets_max - 1):
+        if tweet_count > (settings.TOTAL_TWEETS_MAX - 1):
             break
     else:
         print len(extracted_urls)
@@ -41,33 +38,21 @@ def fetch_tweets(search_request):
     """
     fetches tweets from Twitter API extracts urls and updates db
     """
-    try:
-        tso = TwitterSearchOrder()  # create a TwitterSearchOrder object
-        tso.setKeywords([search_request])  # define search request
-        tso.setCount(settings.tweets_per_page)  # only results_per_page
-        tso.setIncludeEntities(True)  # give us entity information
+    twitter = Twython(settings.TWITTER_CONSUMER_KEY,
+                      settings.TWITTER_CONSUMER_SECRET,
+                      settings.TWITTER_ACCESS_TOKEN,
+                      settings.TWITTER_ACCESS_TOKEN_SECRET)
 
-        # create a TwitterSearch object with our secret tokens
-        ts = TwitterSearch(
-            consumer_key=twitter.TWITTER_CONSUMER_KEY,
-            consumer_secret=twitter.TWITTER_CONSUMER_SECRET,
-            access_token=twitter.TWITTER_ACCESS_TOKEN,
-            access_token_secret=twitter.TWITTER_ACCESS_TOKEN_SECRET
-        )
+    tweets = twitter.search_gen(search_request)
+    found_urls = extract_urls(tweets)
 
-        ts.authenticate()  # user must authenticate first
-        tweets = ts.searchTweetsIterable(tso)
-        found_urls = extract_urls(tweets)
-        search_keyword_object = SearchKeyWord()
-        search_keyword_object.gifs = found_urls
-        search_keyword_object.search_keyword = search_request
-        search_keyword_object.updated_at = datetime.now()
-        print(search_keyword_object)
-        search_keyword_object.save()
-        return found_urls
-
-    except TwitterSearchException, e:  # to take care of errors
-        message = e.message
+    search_keyword_object = SearchKeyWord()
+    search_keyword_object.gifs = found_urls
+    search_keyword_object.search_keyword = search_request
+    search_keyword_object.updated_at = datetime.now()
+    print(search_keyword_object)
+    search_keyword_object.save()
+    return found_urls
 
 
 def search(request):
@@ -84,6 +69,7 @@ def search(request):
             if (datetime.now() - obj.updated_at) <= timedelta(hours=3):
                 found_urls = obj.gifs
             else:
+                obj.delete()
                 found_urls = fetch_tweets(search_request)
         else:
             found_urls = fetch_tweets(search_request)
@@ -110,7 +96,3 @@ def search(request):
     else:
         message = 'You submitted an empty form.'
     return HttpResponse(message)
-
-
-class SearchResultsView(TemplateView):
-    template_name = "search_results.html"
